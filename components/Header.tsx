@@ -14,7 +14,7 @@ const Header = () => {
     <header className="w-full">
 
       {/* TOP BAR */}
-      <div className="bg-black text-white/70 text-sm">
+      <div className="bg-[#15261e] text-white/70 text-sm">
         <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
 
           {/* LEFT LINKS */}
@@ -22,6 +22,8 @@ const Header = () => {
             <Link href="/about">About Us</Link>
             <Link href="/contact">Contact Us</Link>
             <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/disclaimer">Disclaimer</Link>
+            <Link href="/term">Terms & Conditions</Link>
           </div>
 
           {/* RIGHT SOCIAL */}
@@ -36,7 +38,7 @@ const Header = () => {
       </div>
 
       {/* MAIN NAVBAR */}
-      <div className="bg-[#1e4976] text-white">
+      <div className="bg-[#376852] text-white/70">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center">
 
           {/* LOGO */}
