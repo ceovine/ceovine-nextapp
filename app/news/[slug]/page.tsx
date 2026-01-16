@@ -33,7 +33,7 @@ const PostPage = async ({ params }: PageProps) => {
       </h1>
 
       {/* EXCERPT */}
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-sm text-gray-500 mb-4 post_short_description">
         {decodeHtml(post.excerpt)}
       </p>
 

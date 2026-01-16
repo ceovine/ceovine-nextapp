@@ -12,3 +12,13 @@ h6 { font-size: 1rem; }
 h1,h2,h3,h4,h5,h6{font-weight: var(--font-weight-semibold); margin-bottom: 10px;}
 .site_logo{ margin-top: -2px;transform: translateY(-2px);}
 .latest_3_box article{border-color: #ddd;}  
+
+
+.post_short_description{
+	font-size: 20px;
+	color: #364153;
+	font-style: italic;
+	/*border-top: 1px solid #36415336;
+	border-bottom: 1px solid #36415336;*/
+	padding: 18px 20px 20px 20px;
+	margin-top: 22px;box-shadow: 0 0 1px 0px #376852;border-radius: 8px;background: #fff;}
