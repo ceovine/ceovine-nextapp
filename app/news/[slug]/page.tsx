@@ -47,12 +47,17 @@ const PostPage = async ({ params }: PageProps) => {
         <Image
           src={post.image}
           alt={decodeHtml(post.title)}
+          sizes="(max-width: 768px) 100vw, 1200px"
+          fill={false}
           width={1200}
           height={675}
+          placeholder="blur"
+          blurDataURL="/blur.jpg"
           priority
           className="aspect-[16/9] object-cover mb-6 rounded-xl"
         />
       )}
+
 
       {/* CONTENT */}
       <div
