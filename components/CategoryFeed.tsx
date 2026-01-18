@@ -54,7 +54,7 @@ const CategoryFeed = ({
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 ceovine_cat_grid">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 ceovine_cat_grid pt-3">
         {posts.map(post => (
           <Link key={post.id} href={`/news/${post.slug}`}>
             <div className="ceovine_cat_grid_box rounded-xl overflow-hidden p-3">

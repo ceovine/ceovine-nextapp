@@ -28,7 +28,7 @@ const Latest3 = ({ title, posts }: Latest3Props) => {
                 href={`/category/${post.category.slug}`}
                 className="block text-xs font-bold uppercase mb-2 tracking-wide category"
               >
-                {post.category.name}
+                {decodeHtml(post.category.name)}
               </Link>
             )}
 

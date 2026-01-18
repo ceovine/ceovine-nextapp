@@ -1,6 +1,9 @@
-import { getPostBySlug } from '@/lib/api';
+import { getPostBySlug,
+         getLatestPosts } from '@/lib/api';
+
 import Image from 'next/image';
 import { decodeHtml } from '@/lib/decodeHtml';
+import Latest3 from '@/components/home/Latest3';
 
 export const revalidate = 300;
 
@@ -9,8 +12,15 @@ type PageProps = {
     slug: string;
   }>;
 };
-
+const NEWS_LATEST_LIMIT = 10;
 const PostPage = async ({ params }: PageProps) => {
+
+  const [
+      newsPosts
+    ] = await Promise.all([
+      getLatestPosts()
+    ]);
+
   const { slug } = await params; // ✅ IMPORTANT
 
   const post = await getPostBySlug(slug);
@@ -20,50 +30,67 @@ const PostPage = async ({ params }: PageProps) => {
   }
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-6">
-      
-      {/* CATEGORY */}
-      <p className="text-xs uppercase text-gray-500 mb-2">
-        {post.category?.name}
-      </p>
 
-      {/* TITLE */}
-      <h1 className="text-3xl font-bold leading-tight mb-4">
-        {decodeHtml(post.title)}
-      </h1>
+    <main className="px-4 py-12 max-w-6xl mx-auto">
+    <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 single_post_area">
+      <div className="lg:col-span-2">
+        <article className="max-w-3xl mx-auto px-4 py-6">
+          
+          {/* CATEGORY */}
+          <div className="text-xs uppercase text-gray-500 mb-2">
+            {decodeHtml(post.category?.name)}
+          </div>
 
-      {/* EXCERPT */}
-      <p className="text-sm text-gray-500 mb-4 post_short_description">
-        {decodeHtml(post.excerpt)}
-      </p>
+          {/* TITLE */}
+          <h1 className="single_post_h1 font-bold max-w-full">
+            {decodeHtml(post.title)}
+          </h1>
 
-      {/* META */}
-      <div className="text-sm text-gray-500 mb-6">
-        {post.author} • {post.date}
+          {/* EXCERPT */}
+          <p className="text-sm text-gray-500 mb-4 post_short_description">
+            {decodeHtml(post.excerpt)}
+          </p>
+
+          {/* META */}
+          <div className="text-sm text-gray-500 mb-6">
+            {post.author} • {post.date}
+          </div>
+
+          {/* FEATURED IMAGE */}
+          {post.image && (
+            <Image
+              src={post.image}
+              alt={decodeHtml(post.title)}
+              sizes="(max-width: 768px) 100vw, 1200px"
+              width={1200}
+              height={675}
+              placeholder="blur"
+              blurDataURL="/blur.jpg"
+              priority
+              className="aspect-[16/9] object-cover mb-6 rounded-xl"
+            />
+          )}
+
+
+          {/* CONTENT */}
+          <div
+            className="prose prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </article>
+
       </div>
 
-      {/* FEATURED IMAGE */}
-      {post.image && (
-        <Image
-          src={post.image}
-          alt={decodeHtml(post.title)}
-          sizes="(max-width: 768px) 100vw, 1200px"
-          width={1200}
-          height={675}
-          placeholder="blur"
-          blurDataURL="/blur.jpg"
-          priority
-          className="aspect-[16/9] object-cover mb-6 rounded-xl"
-        />
-      )}
+    <div className='pt-6'>
+      <Latest3 title="LATEST News" posts={newsPosts.slice(0, NEWS_LATEST_LIMIT)}/>
+      
+    </div>
 
+    </section>
 
-      {/* CONTENT */}
-      <div
-        className="prose prose-lg max-w-none"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
-    </article>
+    
+    </main>
+
   );
 };
 

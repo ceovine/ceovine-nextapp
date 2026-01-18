@@ -70,8 +70,7 @@ const Home = async () => {
       </div>
       <div>
       {/* News Category Latest */}
-      <Latest3 title="LATEST STORIES" posts={newsPosts.slice(1, NEWS_LATEST_LIMIT + 1)}
-/>
+      <Latest3 title="LATEST STORIES" posts={newsPosts.slice(1, NEWS_LATEST_LIMIT + 1)}/>
 
 
       {/* <Latest2 posts={newsPosts.slice(1, NEWS_LATEST_LIMIT + 1)} /> */}

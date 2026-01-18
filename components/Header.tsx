@@ -28,10 +28,31 @@ const Header = () => {
 
           {/* RIGHT SOCIAL */}
           <div className="flex gap-3">
-            <Link href="https://www.facebook.com/ceovine" target="_blank" rel="noopener noreferrer">f</Link> 
-            <Link href="https://x.com/ceovine" target="_blank" rel="noopener noreferrer">X</Link>
-            <Link href="https://www.linkedin.com/company/ceo-vine/" target="_blank" rel="noopener noreferrer">in</Link>
-            <Link href="https://www.instagram.com/ceovineindia/" target="_blank" rel="noopener noreferrer">📷</Link>
+            <Link href="https://www.facebook.com/ceovine" target="_blank" rel="noopener noreferrer">
+            <Image
+            src="/facebook.png"
+            alt="facebook icon"
+            width={20}
+            height={20}
+          /></Link> 
+            <Link href="https://x.com/ceovine" target="_blank" rel="noopener noreferrer"><Image
+            src="/twitter.png"
+            alt="twitter icon"
+            width={18}
+            height={18}
+          /></Link>
+            <Link href="https://www.linkedin.com/company/ceo-vine/" target="_blank" rel="noopener noreferrer"><Image
+            src="/linkedin.png"
+            alt="linkedin icon"
+            width={20}
+            height={20}
+          /></Link>
+            <Link href="https://www.instagram.com/ceovineindia/" target="_blank" rel="noopener noreferrer"><Image
+            src="/video.png"
+            alt="video icon"
+            width={20}
+            height={20}
+          /></Link>
           </div>
 
         </div>
@@ -49,7 +70,6 @@ const Header = () => {
             alt="Ceovine Logo"
             width={190}
             height={40}
-            priority
           /></Link>
           </div>
 
