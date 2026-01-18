@@ -40,3 +40,12 @@ h2.title_with_border span{border-bottom: 5px solid var(--ceo_primary); padding-b
 .latest_3_box article:last-child{ padding-bottom: 0;}
 .single_post_h1{ font-size: 38px;line-height: 1.3; }
 .single_post_area{background: #fff; padding: 20px; border-radius: 20px;border: 1px solid #e4e3e2;}
+
+
+
+
+@media (max-width:600px){
+.single_post_h1{ font-size: 30px;line-height: 1.3; }
+}
+
+
