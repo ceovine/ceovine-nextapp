@@ -1,4 +1,7 @@
-import { getLatestPosts, getTrendingPosts, getCategoryPosts } from '@/lib/api';
+import { 
+  getLatestPosts, 
+  getTrendingPosts, 
+  getCategoryPosts } from '@/lib/api';
 //import HeroBanner from '@/components/home/HeroBanner';
 //import Latest from '@/components/home/Latest';
 import HeroBanner2 from '@/components/home/HeroBanner2';
@@ -24,13 +27,23 @@ const Home = async () => {
     trending,
     brands,
     foodbeverages,
-    newsPosts
+    newsPosts,
+    startupslist,
+    founders_spot_grid,
+    women_leaders_grid,
+    //insights_grid,
+    insights_hero_type,
   ] = await Promise.all([
     getLatestPosts(),
     getTrendingPosts(),
     getCategoryPosts('brands', 3),
-    getCategoryPosts('food-beverages', 4),
+    getCategoryPosts('food-beverages', 3),
     getCategoryPosts('news', NEWS_LATEST_LIMIT + 1),
+    getCategoryPosts('startups', 3),
+    getCategoryPosts('founders-spot', 3),
+    getCategoryPosts('women-leaders', 3),
+    //getCategoryPosts('insights', 3),
+    getCategoryPosts('insights', 3 + 1),
   ]);
 
 
@@ -46,9 +59,9 @@ const Home = async () => {
   }
 
   return (
-    <main className="p-6 max-w-6xl mx-auto">
+    <main className="px-4 py-12 max-w-6xl mx-auto">
 
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-7 hero_area">
       <div className="lg:col-span-2">
       {/* News Category Hero */}
       {newsPosts?.[0] && (
@@ -77,16 +90,63 @@ const Home = async () => {
       )}
 
 
+    <section className="grid grid-cols-1 gap-5 mt-8 pb-3">
+      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Startups</span></h2>
+      <CategoryBlock posts={startupslist} />
+    </section>
+
       {/* CATEGORY ROW */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-7">
         <CategoryList title="Food Beverages" slug="food-beverages" posts={foodbeverages} />
         <CategoryList title="Brands" slug="brands" posts={brands} />
+        <CategoryList title="Startups" slug="startups" posts={startupslist} />
         
       </section>
 
-      {/* FUNDING */}
-      <CategoryBlock posts={foodbeverages} />
+      {/* category grid */}
+      
 
+    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Founders Spot</span></h2>
+      <CategoryBlock posts={founders_spot_grid} />
+    </section>
+    
+    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Women Leaders</span></h2>
+      <CategoryBlock posts={women_leaders_grid} />
+    </section>
+
+
+    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Insights</span></h2>
+    </section>
+
+    <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-7 hero_area">
+    <div className="lg:col-span-2">
+    {/* News Category Hero */}
+    {insights_hero_type?.[0] && (
+      <HeroBanner2 post={insights_hero_type[0]} />
+    )}
+    </div>
+    <div>
+    {/* News Category Latest */}
+    <Latest3 title="" posts={insights_hero_type.slice(1, 4 + 1)}/>
+
+
+    {/* <Latest2 posts={newsPosts.slice(1, NEWS_LATEST_LIMIT + 1)} /> */}
+    </div>
+    </section>
+
+
+    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Brands</span></h2>
+      <CategoryBlock posts={brands} />
+    </section>
+
+    {/* <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Insights</span></h2>
+      <CategoryBlock posts={insights_grid} />
+    </section> */}
 
       
     </main>

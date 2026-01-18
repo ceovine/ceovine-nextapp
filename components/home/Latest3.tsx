@@ -13,11 +13,11 @@ const Latest3 = ({ title, posts }: Latest3Props) => {
   return (
     <aside className="w-full max-w-sm latest_3_box">
       {/* TITLE */}
-      <h2 className="italic font-bold text-xl tracking-wide uppercase">
-        {title}
+      {title && (
+      <h2 className="italic font-bold text-xl tracking-wide uppercase title_with_border">
+        <span>{title}</span>
       </h2>
-      <div className="h-1 w-20 bg-red-600 mt-2 mb-2" />
-
+      )}
       {/* LIST */}
       <div className="divide-y">
         {posts.map((post) => (
@@ -26,7 +26,7 @@ const Latest3 = ({ title, posts }: Latest3Props) => {
             {post.category && (
               <Link
                 href={`/category/${post.category.slug}`}
-                className="block text-xs font-bold uppercase text-red-600 mb-2 tracking-wide"
+                className="block text-xs font-bold uppercase mb-2 tracking-wide category"
               >
                 {post.category.name}
               </Link>
