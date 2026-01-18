@@ -105,16 +105,17 @@ const Home = async () => {
 
       {/* category grid */}
       
+    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Brands</span></h2>
+      <CategoryBlock posts={brands} />
+    </section>
 
     <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
       <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Founders Spot</span></h2>
       <CategoryBlock posts={founders_spot_grid} />
     </section>
     
-    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
-      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Women Leaders</span></h2>
-      <CategoryBlock posts={women_leaders_grid} />
-    </section>
+    
 
 
     <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
@@ -139,8 +140,8 @@ const Home = async () => {
 
 
     <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
-      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Brands</span></h2>
-      <CategoryBlock posts={brands} />
+      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Women Leaders</span></h2>
+      <CategoryBlock posts={women_leaders_grid} />
     </section>
 
     {/* <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
