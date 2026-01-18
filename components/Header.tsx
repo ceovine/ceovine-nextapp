@@ -77,7 +77,7 @@ const Header = () => {
 
 
             {/* MENU */}
-            <button className="p-2 hover:bg-gray-100 rounded md:hidden">
+            <button className="p-2 hover:bg-gray-100 rounded md:hidden" aria-label="Open menu">
                 <Menu size={22} />
             </button>
 
