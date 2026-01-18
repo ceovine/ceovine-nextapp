@@ -10,7 +10,7 @@ const Trending = ({ posts }: TrendingProps) => {
   if (!posts || posts.length === 0) return null;
 
   return (
-    <section className="mb-12 trending_area">
+    <section className="mb-12 pt-2 trending_area">
       <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Trending</span></h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">

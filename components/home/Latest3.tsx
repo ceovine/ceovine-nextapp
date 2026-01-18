@@ -34,7 +34,7 @@ const Latest3 = ({ title, posts }: Latest3Props) => {
 
             {/* TITLE */}
             <Link href={`/news/${post.slug}`}>
-              <h3 className="text-base font-semibold leading-snug text-lg hover:underline">
+              <h3 className="text-base font-semibold leading-snug text-lg hover:underline line-clamp-3 lg:line-clamp-2">
                 {decodeHtml(post.title)}
               </h3>
             </Link>

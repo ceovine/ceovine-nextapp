@@ -54,19 +54,21 @@ const CategoryFeed = ({
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 ceovine_cat_grid">
         {posts.map(post => (
           <Link key={post.id} href={`/news/${post.slug}`}>
+            <div className="ceovine_cat_grid_box rounded-xl overflow-hidden p-3">
             <Image
               src={post.image}
               alt={decodeHtml(post.title)}
               width={400}
               height={250}
-              className="object-cover"
+              className="aspect-[16/9] object-cover rounded-xl"
             />
-            <h2 className="mt-2 font-semibold">
+            <h3 className="pt-3 pl-3 pr-3 mb-0 line-clamp-3 lg:line-clamp-2">
               {decodeHtml(post.title)}
-            </h2>
+            </h3>
+            </div>
           </Link>
         ))}
       </div>

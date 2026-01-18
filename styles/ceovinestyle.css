@@ -35,3 +35,6 @@ h2.title_with_border span{border-bottom: 5px solid var(--ceo_primary); padding-b
 .trending_area h2{ margin-bottom: 24px;}
 .ceovine_cat_grid .ceovine_cat_grid_box{ border:1px solid #e4e3e2; background: #fff;}
 .ceovine_cat_grid h3{font-size: 18px;}
+.hero_big h1,
+.hero_big h2{ margin-bottom: 0; font-size: 26px;}
+.latest_3_box article:last-child{ padding-bottom: 0;}

@@ -61,8 +61,8 @@ const Home = async () => {
   return (
     <main className="px-4 py-12 max-w-6xl mx-auto">
 
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-7 hero_area">
-      <div className="lg:col-span-2">
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-9 hero_area">
+      <div className="lg:col-span-2 hero_big">
       {/* News Category Hero */}
       {newsPosts?.[0] && (
         <HeroBanner2 post={newsPosts[0]} />
@@ -122,7 +122,7 @@ const Home = async () => {
       <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Insights</span></h2>
     </section>
 
-    <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-7 hero_area">
+    <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 hero_area">
     <div className="lg:col-span-2">
     {/* News Category Hero */}
     {insights_hero_type?.[0] && (

@@ -51,7 +51,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-    <section className="grid grid-cols-1 md:grid-cols-1 gap-10 mb-16">
+    <section className="grid grid-cols-1 md:grid-cols-1 mb-16">
       <p>For stories that inspire, insights that matter, and brands that lead — CEO VINE is where business meets visibility.</p>
       <p>For partnerships, collaborations, and features: corporate@ceovine.com</p>
     </section>

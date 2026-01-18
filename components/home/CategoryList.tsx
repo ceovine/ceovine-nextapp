@@ -27,7 +27,7 @@ const CategoryList = ({ title, slug, posts }: CategoryListProps) => {
               href={`/news/${post.slug}`}
               className="hover:underline"
             >
-              <h3 className="text-base font-semibold leading-snug text-lg hover:underline">
+              <h3 className="text-base font-semibold leading-snug text-lg hover:underline line-clamp-3 lg:line-clamp-2">
               {decodeHtml(post.title)}
               </h3>
             </Link>

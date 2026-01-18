@@ -22,9 +22,9 @@ const CategoryBlock = ({ posts }: CategoryBlockProps) => {
                 alt={post.title}
                 width={400}
                 height={250}
-                className="object-cover rounded-xl"
+                className="aspect-[16/9] object-cover rounded-xl"
               />
-              <h3 className="pt-3 pl-3 pr-3 mb-0">{decodeHtml(post.title)}</h3>
+              <h3 className="pt-3 pl-3 pr-3 mb-0 line-clamp-3 lg:line-clamp-2">{decodeHtml(post.title)}</h3>
             </div>
           </Link>
         ))}
