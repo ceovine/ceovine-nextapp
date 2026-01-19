@@ -1,4 +1,7 @@
-import { Post } from '@/types/post';
+
+import type { Post, SinglePost } from "@/types/post";
+
+
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE;
 
@@ -101,7 +104,7 @@ export async function searchPosts(query: string): Promise<Post[]> {
 /*
 Single Post
 /wp-json/ceovine/v1/post/{slug}
-*/
+
 export async function getPostBySlug(slug: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE}/post/${slug}`,
@@ -111,3 +114,60 @@ export async function getPostBySlug(slug: string) {
   if (!res.ok) return null;
   return res.json();
 }
+
+
+
+
+export async function getPostBySlug(
+  slug: string
+): Promise<SinglePost | null> {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/post/${slug}`, {
+    next: { revalidate: 300 },
+  });
+
+  if (!res.ok) return null;
+
+  return res.json();
+}
+*/
+
+export async function getPostBySlug(
+  slug: string
+): Promise<SinglePost | null> {
+
+  const safeSlug = decodeURIComponent(slug);
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/post/${safeSlug}`,
+    { next: { revalidate: 300 } }
+  );
+
+  if (!res.ok) return null;
+  return res.json();
+}
+
+
+/**
+ * Tag Wise Posts
+ * */
+export async function getTagPostsPaginated(
+  slug: string,
+  page: number,
+  limit = 20
+): Promise<{
+  posts: Post[];
+  hasMore: boolean;
+  nextPage: number;
+}> {
+  const safeSlug = decodeURIComponent(slug);
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE}/tag/${safeSlug}?page=${page}&limit=${limit}`,
+    { cache: 'no-store' }
+  );
+
+  if (!res.ok) return { posts: [], hasMore: false, nextPage: page };
+
+  return res.json();
+}
+

@@ -14,7 +14,7 @@ const Header = () => {
     <header className="w-full">
 
       {/* TOP BAR */}
-      <div className="bg-[#15261e] text-white/70 text-sm">
+      <div className="bg-[#178a43] text-white/70 text-sm">
         <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
 
           {/* LEFT LINKS */}
@@ -30,7 +30,7 @@ const Header = () => {
           <div className="flex gap-3">
             <Link href="https://www.facebook.com/ceovine" target="_blank" rel="noopener noreferrer">
             <Image
-            src="/facebook.png"
+            src="/f-social.png"
             alt="facebook icon"
             width={20}
             height={20}
@@ -59,7 +59,7 @@ const Header = () => {
       </div>
 
       {/* MAIN NAVBAR */}
-      <div className="bg-[#376852] text-white/70">
+      <div className="bg-[#000000] text-white/70">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center">
 
           {/* LOGO */}

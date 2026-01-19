@@ -19,7 +19,7 @@ const Latest2 = ({ posts }: Latest2Props) => {
           <article key={post.id} className="group">
             <div className="relative">
               {/* IMAGE + NEWS LINK */}
-              <Link href={`/news/${post.slug}`}>
+              <Link href={`/${post.slug}`}>
                 <Image
                   src={post.image}
                   alt={decodeHtml(post.title)}
@@ -42,7 +42,7 @@ const Latest2 = ({ posts }: Latest2Props) => {
 
             {/* TITLE */}
             <h3 className="mt-2 font-semibold group-hover:underline">
-              <Link href={`/news/${post.slug}`}>
+              <Link href={`/${post.slug}`}>
                 {decodeHtml(post.title)}
               </Link>
             </h3>

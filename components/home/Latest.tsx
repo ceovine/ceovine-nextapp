@@ -15,7 +15,7 @@ const Latest = ({ posts }: LatestProps) => {
 
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {posts.map((post) => (
-          <Link key={post.id} href={`/news/${post.slug}`}>
+          <Link key={post.id} href={`/${post.slug}`}>
             <article className="group">
               <Image
                 src={post.image}

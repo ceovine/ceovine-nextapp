@@ -10,7 +10,7 @@ interface HeroBanner2Props {
 const HeroBanner2 = ({ post }: HeroBanner2Props) => {
   return (
     <section className="mb-0">
-      <Link href={`/news/${post.slug}`}>
+      <Link href={`/${post.slug}`}>
         <Image
           src={post.image}
           alt={decodeHtml(post.title)}

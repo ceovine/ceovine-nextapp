@@ -9,7 +9,7 @@ interface HeroBannerProps {
 const HeroBanner = ({ post }: HeroBannerProps) => {
   return (
     <section className="mb-6">
-      <Link href={`/news/${post.slug}`}>
+      <Link href={`/${post.slug}`}>
         <article>
           <Image
             src={post.image}

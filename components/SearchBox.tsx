@@ -63,7 +63,7 @@ const SearchBox = ({ onClose }: { onClose: () => void }) => {
         {results.map(post => (
           <li key={post.id}>
             <Link
-              href={`/news/${post.slug}`}
+              href={`/${post.slug}`}
               onClick={onClose}
               className="block text-sm hover:underline"
               dangerouslySetInnerHTML={{

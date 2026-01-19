@@ -41,9 +41,9 @@
   font-weight: 600;
 }
 
-
+iframe{ margin-bottom: 30px;}
 .wp-block-embed {
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .wp-block-embed iframe {
@@ -52,12 +52,12 @@
 }
 .wp-block-embed__wrapper {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom:39.25%;
   height: 0;
 }
 
 .wp-block-embed__wrapper iframe {
-  position: absolute;
+  position: absolute;visibility: visible !important;
   top: 0;
   left: 0;
   width: 100%;

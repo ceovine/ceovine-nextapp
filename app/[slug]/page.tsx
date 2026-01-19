@@ -1,9 +1,14 @@
+import type { SinglePost } from "@/types/post";
 import { getPostBySlug,
          getLatestPosts } from '@/lib/api';
-
+import Link from "next/link";
 import Image from 'next/image';
 import { decodeHtml } from '@/lib/decodeHtml';
 import Latest3 from '@/components/home/Latest3';
+import ShareButton from '@/components/ShareButton';
+import SocialShare from '@/components/SocialShare';
+
+
 
 export const revalidate = 300;
 
@@ -12,6 +17,8 @@ type PageProps = {
     slug: string;
   }>;
 };
+
+
 const NEWS_LATEST_LIMIT = 10;
 const PostPage = async ({ params }: PageProps) => {
 
@@ -23,7 +30,8 @@ const PostPage = async ({ params }: PageProps) => {
 
   const { slug } = await params; // ✅ IMPORTANT
 
-  const post = await getPostBySlug(slug);
+  //const post = await getPostBySlug(slug);
+  const post: SinglePost | null = await getPostBySlug(slug);
 
   if (!post) {
     return <div className="p-6">Post not found</div>;
@@ -38,13 +46,37 @@ const PostPage = async ({ params }: PageProps) => {
           
           {/* CATEGORY */}
           <div className="text-xs uppercase text-gray-500 mb-2">
-            {decodeHtml(post.category?.name)}
+            {post.category?.name && decodeHtml(post.category.name)}
+
           </div>
+
+<ShareButton
+    title={decodeHtml(post.title)}
+    url={`https://ceovine.com/news/${post.slug}`}
+  />
+
 
           {/* TITLE */}
           <h1 className="single_post_h1 font-bold max-w-full">
             {decodeHtml(post.title)}
           </h1>
+
+{/* TAGS */}
+{post.tags && post.tags.length > 0 && (
+  <div className="flex flex-wrap gap-2 mb-6">
+    {post.tags?.map((tag) => (
+      <Link
+        key={tag.id}
+        href={`/tag/${tag.slug}`}
+        className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-black hover:text-white transition"
+      >
+        #{decodeHtml(tag.name)}
+      </Link>
+    ))}
+  </div>
+)}
+
+
 
           {/* EXCERPT */}
           <p className="text-sm text-gray-500 mb-4 post_short_description">
@@ -73,11 +105,28 @@ const PostPage = async ({ params }: PageProps) => {
 
 
           {/* CONTENT */}
+          
           <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+              className="prose prose-lg max-w-none wp-content"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+
         </article>
+
+ <SocialShare
+  title={decodeHtml(post.title)}
+  url={`https://ceovine.com/news/${post.slug}`}
+  image={post.image}
+/>
+
+<div className="fixed bottom-4 right-4 lg:hidden z-50">
+  <SocialShare
+    title={decodeHtml(post.title)}
+    url={`https://ceovine.com/news/${post.slug}`}
+    image={post.image}
+  />
+</div>
+
 
       </div>
 

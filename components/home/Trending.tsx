@@ -16,7 +16,7 @@ const Trending = ({ posts }: TrendingProps) => {
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         
         {posts.map((post) => (
-          <Link key={post.id} href={`/news/${post.slug}`}>
+          <Link key={post.id} href={`/${post.slug}`}>
             <article className="group flex gap-4">
               {/* <span className="text-xl font-bold text-gray-400">
                 {index + 1}

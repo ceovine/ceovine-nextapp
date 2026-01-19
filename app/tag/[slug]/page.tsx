@@ -1,4 +1,4 @@
-import { getCategoryPostsPaginated } from '@/lib/api';
+import { getTagPostsPaginated } from '@/lib/api';
 import CategoryFeed from '@/components/CategoryFeed';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,10 +12,10 @@ type PageProps = {
   }>;
 };
 
-const CategoryPage = async ({ params }: PageProps) => {
-  const { slug } = await params; // ✅ REQUIRED in Next 16
+const TagPage = async ({ params }: PageProps) => {
+  const { slug } = await params; // ✅ Next 16 compatible
 
-  const initial = await getCategoryPostsPaginated(slug, 1, INITIAL_LIMIT);
+  const initial = await getTagPostsPaginated(slug, 1, INITIAL_LIMIT);
 
   const hero = initial.posts[0];
   const topStories = initial.posts.slice(1, 5);
@@ -24,14 +24,13 @@ const CategoryPage = async ({ params }: PageProps) => {
   return (
     <main className="px-4 py-12 max-w-6xl mx-auto">
 
-      {/* CATEGORY TITLE */}
+      {/* TAG TITLE */}
       <h1 className="text-2xl font-bold uppercase mb-6">
-        {slug.replace(/-/g, ' ')}
+        #{slug.replace(/-/g, ' ')}
       </h1>
 
       {/* ROW 1 */}
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-9 hero_area">
-      
 
         {/* HERO */}
         <div className="lg:col-span-2 hero_big">
@@ -54,27 +53,14 @@ const CategoryPage = async ({ params }: PageProps) => {
 
         {/* TOP STORIES */}
         <aside className="w-full max-w-sm latest_3_box">
-          
-          
           <h2 className="italic font-bold text-xl tracking-wide uppercase title_with_border">
             <span>Top Stories</span>
           </h2>
-          
 
           <div className="divide-y">
             {topStories.map(post => (
               <article key={post.id} className="py-4">
-                {/* {post.image && (
-                  <Image
-                    src={post.image}
-                    alt={decodeHtml(post.title)}
-                    width={80}
-                    height={80}
-                    placeholder="blur"
-                    blurDataURL="/blur.jpg"
-                    className="w-20 h-20 object-cover flex-shrink-0"
-                  />
-                )} */}
+
                 {/* CATEGORY */}
                 {post.category && (
                   <Link
@@ -84,12 +70,13 @@ const CategoryPage = async ({ params }: PageProps) => {
                     {decodeHtml(post.category.name)}
                   </Link>
                 )}
+
                 <Link
                   href={`/${post.slug}`}
                   className="text-sm font-medium leading-snug hover:underline"
                 >
                   <h3 className="text-base font-semibold leading-snug text-lg hover:underline line-clamp-3 lg:line-clamp-2">
-                  {decodeHtml(post.title)}
+                    {decodeHtml(post.title)}
                   </h3>
                 </Link>
               </article>
@@ -100,17 +87,19 @@ const CategoryPage = async ({ params }: PageProps) => {
 
       {/* ROW 2 */}
       <h2 className="italic font-bold text-xl tracking-wide uppercase title_with_border">
-            <span>Latest Stories</span>
-          </h2>
+        <span>Latest Stories</span>
+      </h2>
+
       <CategoryFeed
         slug={slug}
         initialPosts={latest}
         hasMoreInitial={initial.hasMore}
         startPage={initial.nextPage}
+        apiType="tag"   // ⭐ IMPORTANT
       />
 
     </main>
   );
 };
 
-export default CategoryPage;
+export default TagPage;
