@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from 'next/image';
 import { decodeHtml } from '@/lib/decodeHtml';
 import Latest3 from '@/components/home/Latest3';
-import ShareButton from '@/components/ShareButton';
 import SocialShare from '@/components/SocialShare';
 
 
@@ -50,10 +49,6 @@ const PostPage = async ({ params }: PageProps) => {
 
           </div>
 
-<ShareButton
-    title={decodeHtml(post.title)}
-    url={`https://ceovine.com/news/${post.slug}`}
-  />
 
 
           {/* TITLE */}
@@ -68,7 +63,7 @@ const PostPage = async ({ params }: PageProps) => {
       <Link
         key={tag.id}
         href={`/tag/${tag.slug}`}
-        className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-black hover:text-white transition"
+        className="text-xs px-3 py-1 rounded-full hover:bg-black hover:text-white transition tag_item"
       >
         #{decodeHtml(tag.name)}
       </Link>
@@ -113,13 +108,15 @@ const PostPage = async ({ params }: PageProps) => {
 
         </article>
 
+<div className="hidden lg:block">
  <SocialShare
   title={decodeHtml(post.title)}
   url={`https://ceovine.com/news/${post.slug}`}
   image={post.image}
 />
+</div>
 
-<div className="fixed bottom-4 right-4 lg:hidden z-50">
+<div className="fixed mobile_share lg:hidden z-50">
   <SocialShare
     title={decodeHtml(post.title)}
     url={`https://ceovine.com/news/${post.slug}`}

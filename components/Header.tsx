@@ -2,28 +2,77 @@
 import Link from 'next/link';
 import { Search, Menu } from 'lucide-react';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import SearchBox from '@/components/SearchBox';
 
 
+
 const Header = () => {
   
-  const [open, setOpen] = useState(false);
+  //const [open, setOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuClosing, setMenuClosing] = useState(false);
+
+  const openMenu = () => {
+    setIsMenuOpen(true);
+  };
+
+  const closeMenu = () => {
+    setMenuClosing(true);
+
+    setTimeout(() => {
+      setIsMenuOpen(false);
+      setMenuClosing(false);
+    }, 300); // CSS duration ke barabar
+  };
+
+
+
+
+
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(href + '/');
+
+  const menuItems = [
+        { label: 'Founders Spot', href: '/category/founders-spot' },
+        { label: 'Women Leaders', href: '/category/women-leaders' },
+        { label: 'Brands', href: '/category/brands' },
+        { label: 'Startups', href: '/category/startups' },
+        { label: 'Insights', href: '/category/insights' },
+        { label: 'News', href: '/category/news' },
+      ];
+  const menuItemsMob = [
+        { label: 'Founders Spot', href: '/category/founders-spot' },
+        { label: 'Women Leaders', href: '/category/women-leaders' },
+        { label: 'Brands', href: '/category/brands' },
+        { label: 'Startups', href: '/category/startups' },
+        { label: 'Insights', href: '/category/insights' },
+        { label: 'News', href: '/category/news' },
+        { label: 'About Us', href: '/about' },
+        { label: 'Contact Us', href: '/contact' },
+        { label: 'Privacy Policy', href: '/privacy-policy' },
+        { label: 'Disclaimer', href: '/disclaimer' },
+        { label: 'Terms & Conditions', href: '/term' },
+      ];
 
   return (
     <header className="w-full">
 
       {/* TOP BAR */}
-      <div className="bg-[#178a43] text-white/70 text-sm">
+      <div className="bg-[#178a43] text-white/70 text-xs">
         <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
 
           {/* LEFT LINKS */}
           <div className="flex gap-4">
-            <Link href="/about">About Us</Link>
-            <Link href="/contact">Contact Us</Link>
-            <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/disclaimer">Disclaimer</Link>
-            <Link href="/term">Terms & Conditions</Link>
+            <Link className={`${isActive('/about')? 'text-white' : 'hover:text-white'}`} href="/about">About Us</Link>
+            <Link className={`${isActive('/contact')? 'text-white' : 'hover:text-white'}`}  href="/contact">Contact Us</Link>
+            <Link className={`${isActive('/privacy-policy')? 'text-white' : 'hover:text-white'}`}  href="/privacy-policy">Privacy Policy</Link>
+            <Link className={`${isActive('/disclaimer')? 'text-white' : 'hover:text-white'}`}  href="/disclaimer">Disclaimer</Link>
+            <Link className={`${isActive('/term')? 'text-white' : 'hover:text-white'}`}  href="/term">Terms & Conditions</Link>
           </div>
 
           {/* RIGHT SOCIAL */}
@@ -74,30 +123,47 @@ const Header = () => {
           </div>
 
           {/* CENTER MENU */}
-          <nav className="hidden md:flex gap-6 text-sm font-semibold uppercase tracking-wide flex-1">
-            <Link href="/category/founders-spot">Founders Spot</Link>
-            <Link href="/category/women-leaders">Women Leaders</Link>
-            <Link href="/category/brands">Brands</Link>
-            <Link href="/category/startups">Startups</Link>
-            <Link href="/category/insights">Insights</Link>
-            <Link href="/category/news">News</Link>
-          </nav>
+            <nav className="hidden lg:flex gap-6 text-sm font-semibold uppercase tracking-wide ml-auto mr-6">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`${
+                    isActive(item.href)
+                      ? 'text-white border-b-2 border-[#178a43]'
+                      : 'hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
 
           {/* RIGHT ICONS */}
           <div className="flex gap-4 ml-auto">
             
              {/* SEARCH BUTTON */}
+             <div className="relative flex gap-4 ml-auto">
             <button
-                onClick={() => setOpen(true)}
+                onClick={() => setIsSearchOpen(true)}
                 aria-label="Search"
                 className="p-2 hover:bg-white/20 rounded"
                 >
                 <Search size={20} />
                 </button>
 
+                {/* SEARCH BOX */}
+                  {isSearchOpen && (
+                    <div className="absolute right-0 top-12 z-50 w-90 bg-white shadow-xl rounded-lg p-3">
+                      <SearchBox onClose={() => setIsSearchOpen(false)} />
+                    </div>
+                  )}
+                </div>
+
 
             {/* MENU */}
-            <button className="p-2 hover:bg-gray-100 rounded md:hidden" aria-label="Open menu">
+            <button className="p-2 hover:bg-gray-100 rounded lg:hidden" aria-label="Open menu" onClick={openMenu}>
                 <Menu size={22} />
             </button>
 
@@ -107,12 +173,52 @@ const Header = () => {
       </div>
 
 
-      {/* SEARCH BOX */}
-      {open && (
-        <div className="border-t bg-white">
-            <SearchBox onClose={() => setOpen(false)} />
-        </div>
-        )}
+      
+
+
+
+
+
+
+{/* MOBILE SLIDE MENU */}
+{isMenuOpen && (
+  <div className="fixed inset-0 z-50 bg-black/60 lg:hidden">
+    <div
+      className={`absolute left-0 top-0 h-full w-72 bg-black text-white p-6
+        ${menuClosing ? 'animate-slide-out' : 'animate-slide-in'}`}
+    >
+
+      {/* CLOSE */}
+      <button
+        className="mb-6 text-white" onClick={closeMenu}>
+        ✕ Close
+      </button>
+
+      {/* MOBILE LINKS */}
+      
+      
+      <nav className="flex flex-col gap-4 uppercase text-sm font-semibold">
+        {menuItemsMob.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`${
+                    isActive(item.href)
+                      ? 'text-[#178a43]'
+                      : 'hover:text-[#178a43]'
+                  }`}
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </Link>
+              ))}
+      </nav>
+
+    </div>
+  </div>
+)}
+
+
 
 
     </header>

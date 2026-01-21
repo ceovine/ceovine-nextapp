@@ -1,6 +1,16 @@
 import type { Category } from "./category";
 import type { Tag } from "./tag";
 
+
+export type JsonLdValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JsonLdValue[]
+  | { [key: string]: JsonLdValue };
+
+
 /**
  * For listing pages
  * (Home, Category, Search, Trending, Latest)
@@ -16,6 +26,13 @@ export interface Post {
   tags?: Tag[];
 }
 
+export interface SeoData {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  schema?: JsonLdValue | JsonLdValue[];
+}
+
 /**
  * For single post page
  */
@@ -23,4 +40,5 @@ export interface SinglePost extends Post {
   content: string;
   excerpt: string;
   author: string;
+  seo?: SeoData;
 }

@@ -30,7 +30,7 @@ export default function SocialShare({ title, url, image }: Props) {
         aria-label="Share on WhatsApp"
         className="share-btn"
       >
-        <Share2 size={16} /> WhatsApp
+        <Share2 size={16} /> <span>WhatsApp</span>
       </a>
 
       {/* X (Twitter) */}
@@ -41,7 +41,7 @@ export default function SocialShare({ title, url, image }: Props) {
         aria-label="Share on X"
         className="share-btn"
       >
-        <Twitter size={16} /> X
+        <Twitter size={16} /> <span>X</span>
       </a>
 
       {/* Facebook */}
@@ -52,7 +52,7 @@ export default function SocialShare({ title, url, image }: Props) {
         aria-label="Share on Facebook"
         className="share-btn"
       >
-        <Facebook size={16} /> Facebook
+        <Facebook size={16} /> <span>Facebook</span>
       </a>
 
       {/* LinkedIn */}
@@ -63,7 +63,7 @@ export default function SocialShare({ title, url, image }: Props) {
         aria-label="Share on LinkedIn"
         className="share-btn"
       >
-        <Linkedin size={16} /> LinkedIn
+        <Linkedin size={16} /> <span>LinkedIn</span>
       </a>
 
       {/* Pinterest */}
@@ -77,7 +77,7 @@ export default function SocialShare({ title, url, image }: Props) {
           aria-label="Share on Pinterest"
           className="share-btn"
         >
-          <Pin size={16} /> Pinterest
+          <Pin size={16} /> <span>Pinterest</span>
         </a>
       )}
 
@@ -87,7 +87,7 @@ export default function SocialShare({ title, url, image }: Props) {
         aria-label="Share via Email"
         className="share-btn"
       >
-        <Mail size={16} /> Email
+        <Mail size={16} /> <span>Email</span>
       </a>
     </div>
   );

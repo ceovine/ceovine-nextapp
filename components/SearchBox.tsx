@@ -34,7 +34,7 @@ const SearchBox = ({ onClose }: { onClose: () => void }) => {
   }, [q]);
 
   return (
-    <div className="p-4 relative bg-white">
+    <div className="p-3 relative bg-white gap-5">
 
       {/* CLOSE BUTTON */}
       <button
@@ -51,15 +51,17 @@ const SearchBox = ({ onClose }: { onClose: () => void }) => {
         value={q}
         onChange={e => setQ(e.target.value)}
         placeholder="Search news..."
-        className="border px-3 py-2 w-full pr-10"
+        className="w-full bg-white text-black placeholder-gray-400 border border-gray-300 rounded-md px-3 py-2 text-sm"
       />
+      
+
 
       {loading && (
         <p className="text-sm text-gray-500 mt-2">Searching...</p>
       )}
 
       {/* RESULTS */}
-      <ul className="mt-3 space-y-2 max-h-64 overflow-y-auto">
+      <ul className="m-0 space-y-2 max-h-64 overflow-y-auto text-black search_list_ul">
         {results.map(post => (
           <li key={post.id}>
             <Link
