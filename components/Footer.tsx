@@ -59,20 +59,20 @@ const Footer = () => {
           {/* COLUMN 2 */}
           <div>
             <h4 className="font-semibold mb-4">Industry News</h4>
-            <ul className="space-y-2">
-              <li><Link href="#">Auto</Link></li>
-              <li><Link href="#">Banking & Finance</Link></li>
-              <li><Link href="#">Healthcare</Link></li>
-              <li><Link href="#">IT</Link></li>
-              <li><Link href="#">Media</Link></li>
-              <li><Link href="#">Real Estate</Link></li>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/category/founders-spot">Founders Spot</Link></li>
+              <li><Link href="/category/women-leaders">Women Leaders</Link></li>
+              <li><Link href="/category/brands">Brands</Link></li>
+              <li><Link href="/category/startups">Startups</Link></li>
+              <li><Link href="/category/insights">Insights</Link></li>
+              <li><Link href="/category/news">News</Link></li>
             </ul>
           </div>
 
           {/* COLUMN 3 */}
           <div>
             <h4 className="font-semibold mb-4">Other News</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-sm">
               <li><Link href="#">Art & Culture</Link></li>
               <li><Link href="#">Education</Link></li>
               <li><Link href="#">Elections</Link></li>
@@ -84,13 +84,14 @@ const Footer = () => {
 
           {/* COLUMN 4 */}
           <div>
-            <h4 className="font-semibold mb-4">Calculator</h4>
-            <ul className="space-y-2">
-              <li><Link href="#">SIP Calculator</Link></li>
-              <li><Link href="#">Step Up SIP</Link></li>
-              <li><Link href="#">Lumpsum Calculator</Link></li>
-              <li><Link href="#">HDFC SIP</Link></li>
-              <li><Link href="#">SBI SIP</Link></li>
+            <h4 className="font-semibold mb-4">Quick links</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/about">About Us</Link></li>
+              <li><Link href="/contact">Contact Us</Link></li>
+              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+              <li><Link href="/disclaimer">Disclaimer</Link></li>
+              <li><Link href="/term">Terms & Conditions</Link></li>
+
             </ul>
           </div>
 
