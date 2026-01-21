@@ -77,7 +77,7 @@ const CategoryFeed = ({
 {/* SKELETON LOADER (Load More click ke baad) */}
 
       {loading && (
-  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-6">
     {Array.from({ length: 6 }).map((_, i) => (
       <div key={i} className="h-48 bg-gray-200 animate-pulse" />
     ))}

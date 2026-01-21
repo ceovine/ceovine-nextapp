@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { decodeHtml } from '@/lib/decodeHtml';
 
-const INITIAL_LIMIT = 20;
+const INITIAL_LIMIT = 14;
 
 type PageProps = {
   params: Promise<{

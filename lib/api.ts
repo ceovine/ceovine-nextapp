@@ -61,7 +61,7 @@ export async function getCategoryPosts(
 export async function getCategoryPostsPaginated(
   slug: string,
   page: number,
-  limit = 20
+  limit = 14
 ): Promise<{
   posts: Post[];
   hasMore: boolean;
@@ -153,7 +153,7 @@ export async function getPostBySlug(
 export async function getTagPostsPaginated(
   slug: string,
   page: number,
-  limit = 20
+  limit = 14
 ): Promise<{
   posts: Post[];
   hasMore: boolean;
