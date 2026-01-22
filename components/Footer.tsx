@@ -8,10 +8,10 @@ const Footer = () => {
 
 
         {/* MAIN GRID */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 text-center items-center gap-10">
 
           {/* COLUMN 1 */}
-          <div>
+          <div className="flex flex-col items-center">
              {/* LOGO */}
           <div>
             <Link href="/"><Image
@@ -56,51 +56,50 @@ const Footer = () => {
 
           </div>
 
-          {/* COLUMN 2 */}
-          <div>
-            <h4 className="font-semibold mb-4">Industry News</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/category/founders-spot">Founders Spot</Link></li>
-              <li><Link href="/category/women-leaders">Women Leaders</Link></li>
-              <li><Link href="/category/brands">Brands</Link></li>
-              <li><Link href="/category/startups">Startups</Link></li>
-              <li><Link href="/category/insights">Insights</Link></li>
-              <li><Link href="/category/news">News</Link></li>
-            </ul>
-          </div>
 
-          {/* COLUMN 3 */}
-          <div>
-            <h4 className="font-semibold mb-4">Other News</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="#">Art & Culture</Link></li>
-              <li><Link href="#">Education</Link></li>
-              <li><Link href="#">Elections</Link></li>
-              <li><Link href="#">Entertainment</Link></li>
-              <li><Link href="#">Lifestyle</Link></li>
-              <li><Link href="#">Tech</Link></li>
-            </ul>
-          </div>
+              {/* MERGED LINKS COLUMN */}
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-8 max-w-4xl mx-auto">
+                  <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm ">
+                    {[
+                      ['Startups', '/category/startups'],
+                      ['Tech & IT', '/category/tech-it'],
+                      ['Food & Beverages', '/category/food-beverages'],
+                      ['Agritech', '/category/agritech'],
+                      ['Fintech', '/category/fintech'],
+                      ['Hotel & Hospitality', '/category/hotel-hospitality'],
+                      ['EV & Automobile', '/category/ev-automobile'],
+                      ['Ecofriendly & Sustainable', '/category/ecofriendly-sustainable'],
+                      ['NGOs', '/category/ngos'],
+                      ['Travel Tech', '/category/travel-tech'],
+                      ['HealthTech', '/category/healthtech'],
+                      ['Pharmaceutical', '/category/pharmaceutical'],
+                      ['EdTech', '/category/edtech'],
+                      ['Ecommerce', '/category/ecommerce'],
+                      ['Retail', '/category/retail'],
+                      ['Other C-Suites', '/category/other-c-suites'],
+                    ].map(([label, href]) => (
+                      <li key={href} className="whitespace-nowrap">
+                        <Link
+                          href={href}
+                          className="hover:text-white transition"
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
 
-          {/* COLUMN 4 */}
-          <div>
-            <h4 className="font-semibold mb-4">Quick links</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
-              <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-              <li><Link href="/disclaimer">Disclaimer</Link></li>
-              <li><Link href="/term">Terms & Conditions</Link></li>
+                  </ul>
+              </div>
 
-            </ul>
-          </div>
+
+
 
         </div>
 
-        <hr className="border-gray-700 my-12" />
+        <hr className="border-gray-700 mt-8 mb-8" />
 
         {/* BOTTOM */}
-        <div className="flex flex-col md:flex-row justify-center text-sm gap-4 pb-6">
+        <div className="flex flex-col md:flex-row justify-center text-sm gap-4 pb-14">
           <p>© Copyrights 2026 CEO VINE. All Rights Reserved. </p>
         </div>
 

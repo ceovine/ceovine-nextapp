@@ -41,7 +41,7 @@ const PostPage = async ({ params }: PageProps) => {
     <main className="px-4 py-12 max-w-6xl mx-auto">
     <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 single_post_area">
       <div className="lg:col-span-2">
-        <article className="max-w-3xl mx-auto px-4 py-6">
+        <article className="max-w-3xl mx-auto px-4 pt-6 pb-12">
           
           {/* CATEGORY */}
           <div className="text-xs uppercase text-gray-500 mb-2">

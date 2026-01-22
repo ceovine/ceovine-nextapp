@@ -64,10 +64,10 @@ const Header = () => {
 
       {/* TOP BAR */}
       <div className="bg-[#178a43] text-white/70 text-xs">
-        <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
+        <div className="max-w-6xl mx-auto px-4 py-2 flex justify-center lg:justify-between items-center">
 
           {/* LEFT LINKS */}
-          <div className="flex gap-4">
+          <div className="hidden lg:flex gap-4">
             <Link className={`${isActive('/about')? 'text-white' : 'hover:text-white'}`} href="/about">About Us</Link>
             <Link className={`${isActive('/contact')? 'text-white' : 'hover:text-white'}`}  href="/contact">Contact Us</Link>
             <Link className={`${isActive('/privacy-policy')? 'text-white' : 'hover:text-white'}`}  href="/privacy-policy">Privacy Policy</Link>

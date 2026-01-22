@@ -84,7 +84,7 @@ export async function getCategoryPostsPaginated(
 /**
  * 🔍 Search Posts
  * /wp-json/ceovine/v1/search?q=keyword
- */
+ 
 export async function searchPosts(query: string): Promise<Post[]> {
   if (!query || query.trim().length < 2) return [];
 
@@ -99,7 +99,47 @@ export async function searchPosts(query: string): Promise<Post[]> {
   }
 
   return res.json();
+}*/
+
+interface SearchPost {
+  id: number;
+  slug: string;
+  title: { rendered: string };
+  _embedded?: {
+    'wp:featuredmedia'?: {
+      source_url: string;
+    }[];
+  };
 }
+
+export async function searchPosts(query: string) {
+  if (!query || query.trim().length < 2) return [];
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_WP_API}/posts?search=${encodeURIComponent(
+      query
+    )}&per_page=12&_embed`,
+    { cache: 'no-store' }
+  );
+
+  if (!res.ok) {
+    console.error('Search API failed:', res.status);
+    return [];
+  }
+
+  const data: SearchPost[] = await res.json();
+
+  return data.map(post => ({
+    id: post.id,
+    slug: post.slug,
+    title: post.title.rendered.replace(/<[^>]*>/g, ''),
+    image:
+      post._embedded?.['wp:featuredmedia']?.[0]?.source_url ||
+      '/placeholder.jpg',
+  }));
+}
+
+
 
 /*
 Single Post

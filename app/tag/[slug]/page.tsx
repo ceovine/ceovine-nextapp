@@ -86,6 +86,8 @@ const TagPage = async ({ params }: PageProps) => {
       </section>
 
       {/* ROW 2 */}
+      {latest && latest.length > 0 && (
+      <>
       <h2 className="italic font-bold text-xl tracking-wide uppercase title_with_border">
         <span>Latest Stories</span>
       </h2>
@@ -97,6 +99,8 @@ const TagPage = async ({ params }: PageProps) => {
         startPage={initial.nextPage}
         apiType="tag"   // ⭐ IMPORTANT
       />
+      </>
+      )}
 
     </main>
   );
