@@ -7,6 +7,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { decodeHtml } from '@/lib/decodeHtml';
 
+export const dynamic = "force-dynamic";
+
 interface Post {
   id: number;
   title: string;
