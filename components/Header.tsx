@@ -53,7 +53,7 @@ const Header = () => {
         { label: 'Insights', href: '/category/insights' },
         { label: 'News', href: '/category/news' },
         { label: 'About Us', href: '/about' },
-        { label: 'Contact Us', href: '/contact' },
+        { label: 'Contact Us', href: '/contact-us' },
         { label: 'Privacy Policy', href: '/privacy-policy' },
         { label: 'Disclaimer', href: '/disclaimer' },
         { label: 'Terms & Conditions', href: '/term' },
@@ -69,7 +69,7 @@ const Header = () => {
           {/* LEFT LINKS */}
           <div className="hidden lg:flex gap-4">
             <Link className={`${isActive('/about')? 'text-white' : 'hover:text-white'}`} href="/about">About Us</Link>
-            <Link className={`${isActive('/contact')? 'text-white' : 'hover:text-white'}`}  href="/contact">Contact Us</Link>
+            <Link className={`${isActive('/contact')? 'text-white' : 'hover:text-white'}`}  href="/contact-us">Contact Us</Link>
             <Link className={`${isActive('/privacy-policy')? 'text-white' : 'hover:text-white'}`}  href="/privacy-policy">Privacy Policy</Link>
             <Link className={`${isActive('/disclaimer')? 'text-white' : 'hover:text-white'}`}  href="/disclaimer">Disclaimer</Link>
             <Link className={`${isActive('/term')? 'text-white' : 'hover:text-white'}`}  href="/term">Terms & Conditions</Link>
