@@ -58,7 +58,7 @@ const Footer = () => {
 
 
               {/* MERGED LINKS COLUMN */}
-              <div className="grid grid-cols-1 sm:grid-cols-1 gap-8 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-8 max-w-5xl mx-auto">
                   <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm ">
                     {[
                       ['Startups', '/category/startups'],
