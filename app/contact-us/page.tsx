@@ -15,7 +15,7 @@ export default function ContactPage() {
 
             </div>
 
-            <div className='mx-auto'>
+            <div className='text-sm'>
               <h2 className="mb-6">Get in Touch</h2>
               <p>Feel free to reach us if you need any assistance.</p>
               <ContactForm />
