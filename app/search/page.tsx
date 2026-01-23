@@ -1,13 +1,11 @@
 'use client';
-
+export const dynamic = 'force-dynamic';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { searchPosts } from '@/lib/api';
 import Link from 'next/link';
 import Image from 'next/image';
 import { decodeHtml } from '@/lib/decodeHtml';
-
-export const dynamic = 'force-dynamic';
 
 
 interface Post {
