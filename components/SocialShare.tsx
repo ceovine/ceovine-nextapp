@@ -23,7 +23,7 @@ export default function SocialShare({ title, url, image }: Props) {
     'flex items-center gap-2 px-3 py-2 rounded-md text-white text-sm font-medium transition-all duration-200 hover:scale-105';
 
   return (
-    <div className="flex flex-wrap gap-3 items-center">
+    <div className="flex flex-wrap gap-3 items-center justify-center">
 
       {/* WhatsApp */}
       <a
@@ -32,7 +32,7 @@ export default function SocialShare({ title, url, image }: Props) {
         rel="noopener noreferrer"
         className={`${base} bg-[#25D366] hover:bg-[#1ebe5d]`}
       >
-        <Share2 size={16} /> WhatsApp
+        <Share2 size={16} /> <span>WhatsApp</span>
       </a>
 
       {/* X (Twitter) */}
@@ -42,7 +42,7 @@ export default function SocialShare({ title, url, image }: Props) {
         rel="noopener noreferrer"
         className={`${base} bg-black hover:bg-gray-800`}
       >
-        <Twitter size={16} /> X
+        <Twitter size={16} /> <span>X</span>
       </a>
 
       {/* Facebook */}
@@ -52,7 +52,7 @@ export default function SocialShare({ title, url, image }: Props) {
         rel="noopener noreferrer"
         className={`${base} bg-[#1877F2] hover:bg-[#0f65d4]`}
       >
-        <Facebook size={16} /> Facebook
+        <Facebook size={16} /><span>Facebook</span>
       </a>
 
       {/* LinkedIn */}
@@ -62,7 +62,7 @@ export default function SocialShare({ title, url, image }: Props) {
         rel="noopener noreferrer"
         className={`${base} bg-[#0A66C2] hover:bg-[#084f99]`}
       >
-        <Linkedin size={16} /> LinkedIn
+        <Linkedin size={16} /> <span>LinkedIn</span>
       </a>
 
       {/* Pinterest */}
@@ -75,7 +75,7 @@ export default function SocialShare({ title, url, image }: Props) {
           rel="noopener noreferrer"
           className={`${base} bg-[#E60023] hover:bg-[#c2001d]`}
         >
-          <Pin size={16} /> Pinterest
+          <Pin size={16} /> <span>Pinterest</span>
         </a>
       )}
 
@@ -84,7 +84,7 @@ export default function SocialShare({ title, url, image }: Props) {
         href={`mailto:?subject=${encodedTitle}&body=${encodedUrl}`}
         className={`${base} bg-gray-600 hover:bg-gray-700`}
       >
-        <Mail size={16} /> Email
+        <Mail size={16} /> <span>Email</span>
       </a>
     </div>
   );

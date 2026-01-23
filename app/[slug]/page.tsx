@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { decodeHtml } from '@/lib/decodeHtml';
 import Latest3 from '@/components/home/Latest3';
 import SocialShare from '@/components/SocialShare';
+import WpContent from '@/components/WpContent';
+
 
 
 
@@ -100,11 +102,12 @@ const PostPage = async ({ params }: PageProps) => {
 
 
           {/* CONTENT */}
-          
-          <div
+          <WpContent html={post.content} />
+
+          {/* <div
               className="prose prose-lg max-w-none wp-content"
               dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            /> */}
 
         </article>
 

@@ -89,9 +89,11 @@ const Home = async () => {
       )}
 
 
-    <section className="grid grid-cols-1 gap-5 mt-8 pb-3">
+    <section className="mx-auto max-w-sm md:max-w-6xl">
+        <div className="grid grid-cols-1 gap-5 mt-8  pb-3">
       <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Startups</span></h2>
       <CategoryBlock posts={startupslist} />
+      </div>
     </section>
 
       {/* CATEGORY ROW */}
@@ -103,15 +105,17 @@ const Home = async () => {
       </section>
 
       {/* category grid */}
-      
-    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
-      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Brands</span></h2>
-      <CategoryBlock posts={brands} />
+      <section className="mx-auto max-w-sm md:max-w-6xl">
+        <div className="grid grid-cols-1 gap-5 mt-8  pb-3">
+          <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Brands</span></h2>
+          <CategoryBlock posts={brands} />
+        </div>
     </section>
-
-    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+    <section className="mx-auto max-w-sm md:max-w-6xl">
+        <div className="grid grid-cols-1 gap-5 mt-8  pb-3">
       <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Founders Spot</span></h2>
       <CategoryBlock posts={founders_spot_grid} />
+      </div>
     </section>
     
     
@@ -138,9 +142,11 @@ const Home = async () => {
     </section>
 
 
-    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+    <section className="mx-auto max-w-sm md:max-w-6xl">
+        <div className="grid grid-cols-1 gap-5 mt-8  pb-3">
       <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Women Leaders</span></h2>
       <CategoryBlock posts={women_leaders_grid} />
+      </div>
     </section>
 
     {/* <section className="grid grid-cols-1 gap-5 mt-8  pb-3">

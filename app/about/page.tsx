@@ -35,15 +35,25 @@ const AboutPage = () => {
       </section>
 
       {/* MISSION & VISION */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+      <section className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 mb-16">
+        <div>
+          <Image
+          src="/about.jpg" // public/about.jpg
+          alt="About Ceovine"
+          width={600}
+          height={400}
+          className="rounded-xl object-cover"
+          priority
+        />
+          
+        </div>
+
         <div>
           <h2 className="text-2xl font-semibold mb-3">Our Mission</h2>
           <p className=" ">
             Our mission is to amplify entrepreneurial voices and contribute to a transparent, informed, and thriving business community.
           </p>
-        </div>
 
-        <div>
           <h2 className="text-2xl font-semibold mb-3">Our Vision</h2>
           <p className=" ">
             Through our curated content and collaborations, we aim to bridge the gap between brands, investors, and audiences while celebrating the people driving India’s new-age business revolution.
@@ -56,33 +66,7 @@ const AboutPage = () => {
       <p>For partnerships, collaborations, and features: corporate@ceovine.com</p>
     </section>
 
-      {/* VALUES */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-6">Our Core Values</h2>
-
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <li className="p-6 border rounded-lg">
-            <h3 className="font-semibold mb-2">Innovation</h3>
-            <p className="text-sm">
-              We constantly explore new ideas and technologies.
-            </p>
-          </li>
-
-          <li className="p-6 border rounded-lg">
-            <h3 className="font-semibold mb-2">Quality</h3>
-            <p className="text-sm">
-              Performance, reliability, and clean code matter to us.
-            </p>
-          </li>
-
-          <li className="p-6 border rounded-lg">
-            <h3 className="font-semibold mb-2">Transparency</h3>
-            <p className="text-sm">
-              We believe in honesty, clarity, and long-term trust.
-            </p>
-          </li>
-        </ul>
-      </section>
+      
 
     </main>
   );

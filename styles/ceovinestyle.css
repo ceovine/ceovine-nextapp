@@ -67,14 +67,13 @@ h2.title_with_border span{border-bottom: 5px solid var(--ceo_primary); padding-b
 
 .tag_item{ background: var(--ceo_primary); color: var(--ceo_lighttext);}
 .tag_item:hover{ background: #000; color: var(--ceo_lighttext);}
-.mobile_share{background: #fff;
+.mobile_share{background: #384455;
   padding: 10px 25px;
-  border-radius: 30px;
+  border-radius: 0px;
   box-shadow: 0 0 12px -8px #000;
-    bottom: 10px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 364px;
     width: 100%;}
 .mobile_share span{ display: none;}
 

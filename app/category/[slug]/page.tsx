@@ -34,7 +34,7 @@ const CategoryPage = async ({ params }: PageProps) => {
       
 
         {/* HERO */}
-        <div className="lg:col-span-2 hero_big">
+        <div className="lg:col-span-2 hero_big max-w-3xl mx-auto">
           {hero && (
             <Link href={`/${hero.slug}`}>
               <Image
@@ -53,7 +53,7 @@ const CategoryPage = async ({ params }: PageProps) => {
         </div>
 
         {/* TOP STORIES */}
-        <aside className="w-full max-w-sm latest_3_box">
+        <aside className="w-full max-w-3xl mx-auto latest_3_box">
           
           
           <h2 className="italic font-bold text-xl tracking-wide uppercase title_with_border">
@@ -100,7 +100,7 @@ const CategoryPage = async ({ params }: PageProps) => {
 
       {/* ROW 2 */}
       {latest && latest.length > 0 && (
-        <>
+        <div className='mx-auto max-w-sm sm:max-w-6xl'>
       <h2 className="italic font-bold text-xl tracking-wide uppercase title_with_border">
             <span>Latest Stories</span>
           </h2>
@@ -110,7 +110,7 @@ const CategoryPage = async ({ params }: PageProps) => {
         hasMoreInitial={initial.hasMore}
         startPage={initial.nextPage}
       />
-      </>
+      </div>
       )}
 
     </main>

@@ -11,7 +11,7 @@ const Latest3 = ({ title, posts }: Latest3Props) => {
   if (!posts || posts.length === 0) return null;
 
   return (
-    <aside className="w-full max-w-sm latest_3_box">
+    <aside className="w-full latest_3_box max-w-3xl mx-auto">
       {/* TITLE */}
       {title && (
       <h2 className="italic font-bold text-xl tracking-wide uppercase title_with_border">

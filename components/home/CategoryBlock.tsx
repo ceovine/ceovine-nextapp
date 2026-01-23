@@ -13,7 +13,7 @@ const CategoryBlock = ({ posts }: CategoryBlockProps) => {
   return (
     
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ceovine_cat_grid">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ceovine_cat_grid ">
         {posts.map(post => (
           <Link key={post.id} href={`/${post.slug}`}>
             <div className="ceovine_cat_grid_box rounded-xl overflow-hidden p-3">
