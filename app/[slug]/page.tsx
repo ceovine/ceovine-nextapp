@@ -3,10 +3,18 @@ import { getPostBySlug,
          getLatestPosts } from '@/lib/api';
 import Link from "next/link";
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { decodeHtml } from '@/lib/decodeHtml';
-import Latest3 from '@/components/home/Latest3';
-import SocialShare from '@/components/SocialShare';
+//import Latest3 from '@/components/home/Latest3';
+//import SocialShare from '@/components/SocialShare';
+const SocialShare = dynamic(() => import('@/components/SocialShare'), {
+  ssr: false,
+});
+
 import WpContent from '@/components/WpContent';
+const Latest3 = dynamic(() => import('@/components/home/Latest3'), {
+  ssr: false,
+});
 
 
 

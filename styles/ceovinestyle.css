@@ -46,7 +46,7 @@ h2.title_with_border span{border-bottom: 5px solid var(--ceo_primary); padding-b
 /*.hero_big h1,
 .hero_big h2{ margin-bottom: 0; font-size: 26px;}*/
 .latest_3_box article:last-child{ padding-bottom: 0;}
-.single_post_h1{ font-size: 38px;line-height: 1.3; }
+.single_post_h1{ font-size: 38px;line-height: 1.3; font-display: swap;}
 .single_post_area{background: #fff; padding: 20px 20px 30px; border-radius: 20px;border: 1px solid #e4e3e2;}
 
 
