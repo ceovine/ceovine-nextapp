@@ -41,12 +41,12 @@ const PostPage = async ({ params }: PageProps) => {
   return (
 
     <main className="px-4 py-12 max-w-6xl mx-auto">
-    <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 single_post_area">
+    <section className="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8 single_post_area">
       <div className="lg:col-span-2">
-        <article className="max-w-3xl mx-auto px-4 pt-6 pb-12">
+        <article className="max-w-3xl mx-auto px-4 pt-6 pb-6">
           
           {/* CATEGORY */}
-          <div className="text-xs uppercase text-gray-500 mb-2">
+          <div className="block text-xs font-bold uppercase mb-2 tracking-wide category">
             {post.category?.name && decodeHtml(post.category.name)}
 
           </div>
@@ -93,9 +93,8 @@ const PostPage = async ({ params }: PageProps) => {
               sizes="(max-width: 768px) 100vw, 1200px"
               width={750}
               height={420}
-              placeholder="blur"
-              blurDataURL="/blur.jpg"
-              priority
+              fetchPriority="high"
+              loading="eager"
               className="aspect-[16/9] object-cover mb-6 rounded-xl"
             />
           )}
@@ -111,7 +110,7 @@ const PostPage = async ({ params }: PageProps) => {
 
         </article>
 
-<div className="hidden lg:block">
+<div className="hidden lg:block px-4">
  <SocialShare
   title={decodeHtml(post.title)}
   url={`https://ceovine.com/news/${post.slug}`}

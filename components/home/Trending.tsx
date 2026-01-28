@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Post } from '@/types/post';
+import { decodeHtml } from '@/lib/decodeHtml';
 
 interface TrendingProps {
   posts: Post[];
@@ -24,13 +25,13 @@ const Trending = ({ posts }: TrendingProps) => {
 
               <div className="flex-1">
                 <h6 className="text-lg font-semibold leading-snug group-hover:underline">
-                  {post.title}
+                  {decodeHtml(post.title)}
                 </h6>
               </div>
 
               <Image
                 src={post.image}
-                alt={post.title}
+                alt={decodeHtml(post.title)}
                 width={120}
                 height={80}
                 className="rounded-md object-cover"
