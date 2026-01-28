@@ -1,4 +1,4 @@
-body{color: #222222;font-size: 17px;}
+body{color: #222222;font-size: 17px;background:#f8f4f1;}
 p{margin: 0 0 26px;}
 p:empty,
 p:has(br:only-child),
