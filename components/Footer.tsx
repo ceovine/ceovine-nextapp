@@ -8,7 +8,7 @@ const Footer = () => {
 
 
         {/* MAIN GRID */}
-        <div className="grid grid-cols-1 text-center items-center gap-10">
+        <div className="grid grid-cols-1 text-center items-center gap-4">
 
           {/* COLUMN 1 */}
           <div className="flex flex-col items-center">
@@ -56,6 +56,7 @@ const Footer = () => {
 
           </div>
 
+            <hr className="border-gray-700 mt-6 mb-4" />
 
               {/* MERGED LINKS COLUMN */}
               <div className="grid grid-cols-1 sm:grid-cols-1 gap-8 max-w-5xl mx-auto">
@@ -90,6 +91,18 @@ const Footer = () => {
 
                   </ul>
               </div>
+
+<hr className="border-gray-700 mt-2 mb-2" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-1 gap-8 max-w-5xl mx-auto">
+              <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm ">
+                  <li className="whitespace-nowrap"><Link className="hover:text-white transition" href="/about">About Us</Link></li>
+                  <li className="whitespace-nowrap"><Link className="hover:text-white transition"  href="/contact-us">Contact Us</Link></li>
+                 <li className="whitespace-nowrap"> <Link className="hover:text-white transition" href="/privacy-policy">Privacy Policy</Link></li>
+                 <li className="whitespace-nowrap"> <Link className="hover:text-white transition" href="/disclaimer">Disclaimer</Link></li>
+                 <li className="whitespace-nowrap"> <Link className="hover:text-white transition" href="/term">Terms & Conditions</Link></li>
+              </ul>
+            </div>
 
 
 
