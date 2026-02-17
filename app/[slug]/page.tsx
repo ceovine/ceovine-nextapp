@@ -11,10 +11,58 @@ import { SocialShare, Latest3 } from '@/components/ClientWidgets';
 
 
 
-
-
-
 export const revalidate = 300;
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params;
+
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_WP_API_SEO}/rankmath/v1/getHead?url=https://www.ceovine.com/${slug}/`,
+      { next: { revalidate: 300 } }
+    );
+
+    if (!res.ok) return {};
+
+    const data = await res.json();
+    const head = data?.head || "";
+
+    // ✅ Extract title
+    const titleMatch = head.match(/<title>(.*?)<\/title>/);
+    const title = titleMatch ? titleMatch[1] : "";
+
+    // ✅ Extract description
+    const descMatch = head.match(/<meta name="description" content="(.*?)"/);
+    const description = descMatch ? descMatch[1] : "";
+
+    // ✅ Extract OG Image
+    const ogImageMatch = head.match(/<meta property="og:image" content="(.*?)"/);
+    const ogImage = ogImageMatch ? ogImageMatch[1] : "";
+
+    return {
+      title,
+      description, 
+      openGraph: {
+        title,
+        description,
+        url: `https://www.ceovine.com/${slug}`,
+        images: ogImage ? [{ url: ogImage }] : [],
+      },
+    };
+
+  } catch (error) {
+    console.log("Metadata error:", error);
+    return {};
+  }
+}
+
+
+
+
+
+
 
 type PageProps = {
   params: Promise<{
@@ -32,7 +80,23 @@ const PostPage = async ({ params }: PageProps) => {
       getLatestPosts()
     ]);
 
-  const { slug } = await params; // ✅ IMPORTANT
+const { slug } = await params; // ✅ correct for Next 15
+
+
+const seoRes = await fetch(
+  `${process.env.NEXT_PUBLIC_WP_API_SEO}/rankmath/v1/getHead?url=https://www.ceovine.com/${slug}/`,
+  { cache: "no-store" }
+);
+
+const seoData = await seoRes.json();
+const head = seoData?.head || "";
+
+const schemaMatch = head.match(
+  /<script type="application\/ld\+json" class="rank-math-schema">(.*?)<\/script>/
+);
+
+const schema = schemaMatch ? schemaMatch[1] : "";
+
 
   //const post = await getPostBySlug(slug);
   const post: SinglePost | null = await getPostBySlug(slug);
@@ -42,6 +106,13 @@ const PostPage = async ({ params }: PageProps) => {
   }
 
   return (
+<>
+    {schema && (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: schema }}
+    />
+  )}
 
     <main className="px-4 py-12 max-w-6xl mx-auto">
     <section className="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8 single_post_area">
@@ -116,7 +187,7 @@ const PostPage = async ({ params }: PageProps) => {
 <div className="hidden lg:block px-4">
  <SocialShare
   title={decodeHtml(post.title)}
-  url={`https://ceovine.com/news/${post.slug}`}
+  url={`https://ceovine.com/${post.slug}`}
   image={post.image}
 />
 </div>
@@ -124,7 +195,7 @@ const PostPage = async ({ params }: PageProps) => {
 <div className="fixed mobile_share lg:hidden z-50">
   <SocialShare
     title={decodeHtml(post.title)}
-    url={`https://ceovine.com/news/${post.slug}`}
+    url={`https://ceovine.com/${post.slug}`}
     image={post.image}
   />
 </div>
@@ -141,6 +212,7 @@ const PostPage = async ({ params }: PageProps) => {
 
     
     </main>
+</>
 
   );
 };

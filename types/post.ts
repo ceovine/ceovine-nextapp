@@ -30,7 +30,7 @@ export interface SeoData {
   title?: string;
   description?: string;
   canonical?: string;
-  schema?: JsonLdValue | JsonLdValue[];
+  //schema?: JsonLdValue | JsonLdValue[];
 }
 
 /**

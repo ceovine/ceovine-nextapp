@@ -31,8 +31,8 @@ h1,h2,h3,h4,h5,h6{font-weight: var(--font-weight-semibold); margin-bottom: 10px;
 	margin-top: 22px;border-radius: 8px;background: #3768521c;
 }
 
-h2.title_with_border{border-bottom: 1px solid #dddddd31;}
-h2.title_with_border span{border-bottom: 5px solid var(--ceo_primary); padding-bottom:5px;	display: inline-block;}
+h2.title_with_border{border-bottom: 1px solid #dddddd;}
+h2.title_with_border span{border-bottom: 5px solid var(--ceo_primary); padding-bottom:5px;	display: inline-block; font-weight: 700;}
 .single_post_area .category,
 .latest_3_box .category{ color:var(--ceo_primary);}
 .ceovine_cat_list{ padding: 0; margin: 0; list-style: none;}
