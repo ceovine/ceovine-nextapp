@@ -97,12 +97,33 @@ const Home = async () => {
     </section>
 
       {/* CATEGORY ROW */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-7">
+      {/* <section className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-7">
         <CategoryList title="Food Beverages" slug="food-beverages" posts={foodbeverages} />
         <CategoryList title="Brands" slug="brands" posts={brands} />
         <CategoryList title="Startups" slug="startups" posts={startupslist} />
         
+      </section> */}
+      <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
+        <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Insights</span></h2>
       </section>
+
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 hero_area">
+      <div className="lg:col-span-2">
+      {/* News Category Hero */}
+      {insights_hero_type?.[0] && (
+        <HeroBanner2 post={insights_hero_type[0]} />
+      )}
+      </div>
+      <div>
+      {/* News Category Latest */}
+      <Latest3 title="" posts={insights_hero_type.slice(1, 4 + 1)}/>
+
+
+      {/* <Latest2 posts={newsPosts.slice(1, NEWS_LATEST_LIMIT + 1)} /> */}
+      </div>
+      </section>
+
+
 
       {/* category grid */}
       <section className="mx-auto max-w-sm md:max-w-6xl">
@@ -121,25 +142,7 @@ const Home = async () => {
     
 
 
-    <section className="grid grid-cols-1 gap-5 mt-8  pb-3">
-      <h2 className="italic font-bold text-lg uppercase title_with_border"><span>Insights</span></h2>
-    </section>
-
-    <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 hero_area">
-    <div className="lg:col-span-2">
-    {/* News Category Hero */}
-    {insights_hero_type?.[0] && (
-      <HeroBanner2 post={insights_hero_type[0]} />
-    )}
-    </div>
-    <div>
-    {/* News Category Latest */}
-    <Latest3 title="" posts={insights_hero_type.slice(1, 4 + 1)}/>
-
-
-    {/* <Latest2 posts={newsPosts.slice(1, NEWS_LATEST_LIMIT + 1)} /> */}
-    </div>
-    </section>
+    
 
 
     <section className="mx-auto max-w-sm md:max-w-6xl">

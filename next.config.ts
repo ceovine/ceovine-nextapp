@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.ceovine.com',
+        hostname: 'app.ceovine.com',
         pathname: '/wp-content/uploads/**',
       },
     ],
