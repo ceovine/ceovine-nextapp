@@ -37,7 +37,7 @@ const Home = async () => {
     getLatestPosts(),
     getTrendingPosts(),
     getCategoryPosts('brands', 3),
-    getCategoryPosts('food-beverages', 3),
+    //getCategoryPosts('food-beverages', 3),
     getCategoryPosts('news', NEWS_LATEST_LIMIT + 1),
     getCategoryPosts('startups', 3),
     getCategoryPosts('founders-spot', 3),
