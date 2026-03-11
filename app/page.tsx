@@ -8,7 +8,7 @@ import HeroBanner2 from '@/components/home/HeroBanner2';
 //import Latest2 from '@/components/home/Latest2';
 import Latest3 from '@/components/home/Latest3';
 import Trending from '@/components/home/Trending';
-import CategoryList from '@/components/home/CategoryList';
+//import CategoryList from '@/components/home/CategoryList';
 import CategoryBlock from '@/components/home/CategoryBlock';
 
 
@@ -26,7 +26,7 @@ const Home = async () => {
     latest,
     trending,
     brands,
-    foodbeverages,
+    //foodbeverages,
     newsPosts,
     startupslist,
     founders_spot_grid,
