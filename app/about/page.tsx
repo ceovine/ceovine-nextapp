@@ -1,8 +1,14 @@
 import Image from "next/image";
 
 export const metadata = {
-  title: "About Us | Ceovine",
-  description: "Learn more about Ceovine, our vision, mission, and values.",
+  title: "About CEO VINE - Our MIssion & Vision",
+
+  description:
+    "About CEO VINE - A platform serves as a hub for authentic business stories, insightful interviews, and industry updates.",
+
+  alternates: {
+    canonical: "https://ceovine.com/about",
+  },
 };
 
 const AboutPage = () => {

@@ -19,6 +19,52 @@ const NEWS_LATEST_LIMIT = 4;
 const TRENDING_LIMIT = 3;
 
 
+export const metadata = {
+  title: "The CEO VINE - A Digital Magazine for Business Leaders",
+
+  description:
+    "The CEO VINE - A Digital Magazine for Business Leaders",
+
+  alternates: {
+    canonical: "https://ceovine.com",
+  },
+};
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ceovine.com/#organization",
+      "name": "CEO VINE",
+      "url": "https://ceovine.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://app.ceovine.com/wp-content/uploads/2025/06/046614.png"
+      },
+      "sameAs": [
+        "https://www.facebook.com/ceovine",
+        "https://twitter.com/CeoVine",
+        "https://www.linkedin.com/company/ceo-vine/",
+        "https://www.instagram.com/ceovineindia/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ceovine.com/#website",
+      "url": "https://ceovine.com",
+      "name": "CEO VINE",
+      "publisher": {
+        "@id": "https://ceovine.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ceovine.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+};
 
 
 const Home = async () => {
@@ -43,7 +89,7 @@ const Home = async () => {
     getCategoryPosts('founders-spot', 3),
     getCategoryPosts('women-leaders', 3),
     //getCategoryPosts('insights', 3),
-    getCategoryPosts('insights', 3 + 1),
+    getCategoryPosts('insights', 4 + 1),
   ]);
 
 
@@ -59,6 +105,15 @@ const Home = async () => {
   }
 
   return (
+
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(homeSchema)
+        }}
+      />
+      
     <main className="px-4 py-12 max-w-6xl mx-auto">
 
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-9 hero_area">
@@ -159,6 +214,8 @@ const Home = async () => {
 
       
     </main>
+
+    </>
   );
 };
 

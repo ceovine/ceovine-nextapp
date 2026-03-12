@@ -13,53 +13,53 @@ import { SocialShare, Latest3 } from '@/components/ClientWidgets';
 
 export const revalidate = 300;
 
+
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ) {
+
   const { slug } = await params;
 
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_WP_API_SEO}/rankmath/v1/getHead?url=https://www.ceovine.com/${slug}/`,
-      { next: { revalidate: 300 } }
-    );
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_WP_API_SEO}/rankmath/v1/getHead?url=https://app.ceovine.com/${slug}/`,
+    { next: { revalidate: 300 } }
+  );
 
-    if (!res.ok) return {};
+  if (!res.ok) return {};
 
-    const data = await res.json();
-    const head = data?.head || "";
+  const data = await res.json();
+  const head = data?.head || "";
 
-    // ✅ Extract title
-    const titleMatch = head.match(/<title>(.*?)<\/title>/);
-    const title = titleMatch ? titleMatch[1] : "";
+  const titleMatch = head.match(/<title[^>]*>([^<]*)<\/title>/i);
+  const descMatch = head.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)/i);
+  const ogImageMatch = head.match(/<meta[^>]*property=["']og:image["'][^>]*content=["']([^"']*)/i);
+  const canonicalMatch = head.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']*)/i);
 
-    // ✅ Extract description
-    const descMatch = head.match(/<meta name="description" content="(.*?)"/);
-    const description = descMatch ? descMatch[1] : "";
+  const title = titleMatch?.[1] || "";
+  const description = descMatch?.[1] || "";
+  const ogImage = ogImageMatch?.[1] || "";
+  const canonical = canonicalMatch?.[1] || "";
 
-    // ✅ Extract OG Image
-    const ogImageMatch = head.match(/<meta property="og:image" content="(.*?)"/);
-    const ogImage = ogImageMatch ? ogImageMatch[1] : "";
-
-    return {
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonical?.replace("app.ceovine.com", "ceovine.com"),
+    },
+    openGraph: {
       title,
-      description, 
-      openGraph: {
-        title,
-        description,
-        url: `https://www.ceovine.com/${slug}`,
-        images: ogImage ? [{ url: ogImage }] : [],
-      },
-    };
-
-  } catch (error) {
-    console.log("Metadata error:", error);
-    return {};
-  }
+      description,
+      url: canonical?.replace("app.ceovine.com", "ceovine.com"),
+      images: ogImage ? [{ url: ogImage }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ogImage ? [ogImage] : [],
+    },
+  };
 }
-
-
-
 
 
 
@@ -83,9 +83,11 @@ const PostPage = async ({ params }: PageProps) => {
 const { slug } = await params; // ✅ correct for Next 15
 
 
+
+
 const seoRes = await fetch(
-  `${process.env.NEXT_PUBLIC_WP_API_SEO}/rankmath/v1/getHead?url=https://www.ceovine.com/${slug}/`,
-  { cache: "no-store" }
+  `${process.env.NEXT_PUBLIC_WP_API_SEO}/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_FRONTEND_URL}/${slug}/`,
+  { next: { revalidate: 300 } }
 );
 
 const seoData = await seoRes.json();

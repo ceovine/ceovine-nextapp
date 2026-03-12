@@ -1,5 +1,16 @@
 import ContactForm from '@/components/ContactForm';
 
+export const metadata = {
+  title: "Contact CEO VINE - Get in touch with us",
+
+  description:
+    "Contact CEO VINE - Highlighting prominent CEO's across different sectors in an exclusive feature.",
+
+  alternates: {
+    canonical: "https://ceovine.com/contact-us",
+  },
+};
+
 export default function ContactPage() {
   return (
 
